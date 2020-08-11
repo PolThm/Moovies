@@ -1,21 +1,18 @@
 {
-  "name": "marmiton",
+  "name": "website-by-pol-thomas",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "@types/jest": "^24.9.1",
-    "@types/node": "^12.12.47",
-    "@types/react": "^16.9.41",
-    "@types/react-dom": "^16.9.8",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
-    "typescript": "^3.7.5"
+    "react-scripts": "3.4.1"
   },
   "scripts": {
+    "build:css": "postcss src/tailwind/tailwind.css -o src/tailwind.css",
+    "watch:css": "postcss src/tailwind/tailwind.css -o src/tailwind.css -w",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -35,5 +32,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.5",
+    "postcss-cli": "^7.1.1",
+    "tailwindcss": "^1.5.1"
   }
 }
