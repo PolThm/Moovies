@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Header = () => {
   return (
     <header className="py-4 flex justify-between">
-      <h1 className="text-4xl text-red-400">Marmiton<span className="block text-2xl text-gray-700">by Pol Thomas</span></h1>
+      <h1 className="text-4xl text-red-400">Moovies<span className="block text-2xl text-gray-700">by Pol Thomas</span></h1>
       <nav>
         <ul className="sm:flex text-2xl pt-4 pl-4 uppercase tracking-wider text-blue-400">
           <li className="hover:text-red-400"><Link to="/">Home</Link></li>
