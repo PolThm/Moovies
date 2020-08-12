@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import "./G02SearchBar.css";
 
-class G02SearchBar extends Component {
+class SearchBar extends Component {
   state = {
     searchBar: ''
   };
@@ -21,4 +20,4 @@ class G02SearchBar extends Component {
   }
 }
 
-export default G02SearchBar;
+export default SearchBar;
