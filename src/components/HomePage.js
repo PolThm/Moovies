@@ -1,41 +1,42 @@
 import React, {Component} from "react";
-import imdb from "../apis/imdb";
 import SearchBar from "./SearchBar";
 import MovieOverview from "./MovieOverview";
+import ClipLoader from "react-spinners/ClipLoader";
+import {connect} from 'react-redux';
 
 class HomePage extends Component {
-  state = {
-    movies: [],
-    selectedMovie : null
-  };
-
-  componentDidMount() {
-    this.onTermSubmit('Comedy');
-  };
-
-  onTermSubmit = async (term) => {
-    const response = await imdb.get('');
-
-    this.setState({
-      movies: response.data.items,
-      // selectedMovie: response.data[0]
-    });
-
-    console.log(this.state.movies);
-  };
 
   render() {
-    const movies = this.state.movies;
+    console.log(this.props.movies);
 
-    const movieList = movies.map(movie => {
+    let movieList;
+
+    movieList = this.props.movies.slice(0, 30).map(movie => {
       return (
         <MovieOverview
           key={movie.id}
-          img={movie.images}
+          img={movie.image}
           title={movie.title}
+          year={movie.year}
+          crew={movie.crew}
         />
       );
     });
+
+    if (this.props.loading) {
+      movieList =
+        <div className="text-center pt-24">
+          <ClipLoader
+            size={50}
+            color={"black"}
+            loading={this.props.loading}
+          />
+        </div>;
+    }
+
+    if (this.props.errorApi) {
+      movieList = <p className="text-red-600 text-center pt-24">{this.props.errorApi}</p>;
+    }
 
     return (
       <div>
@@ -46,4 +47,14 @@ class HomePage extends Component {
   };
 }
 
-export default HomePage;
+const mapStateToProps = (state) => {
+  return {
+    movies: state.moovies.movies,
+    errorApi: state.moovies.apiError,
+    loading: state.moovies.loading
+  }
+};
+
+export default connect(
+  mapStateToProps
+)(HomePage);

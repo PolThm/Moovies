@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
-import marmitonReducer from './marmitonReducer';
+import mooviesReducer from './mooviesReducer';
 
 export default combineReducers({
-  marmiton: marmitonReducer
+  moovies: mooviesReducer
 });
