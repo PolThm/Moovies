@@ -13,6 +13,8 @@ class MovieOverview extends Component {
   };
 
   render() {
+
+
     let fa;
 
     if (this.props.favorite) {

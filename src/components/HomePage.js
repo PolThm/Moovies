@@ -7,7 +7,8 @@ import {connect} from 'react-redux';
 class HomePage extends Component {
 
   render() {
-    console.log(this.props.movies);
+    // const filteredMovies = this.props.movies.slice(0, 30)
+    //   .filter((movie) => new RegExp(this.state.searchBar, "i").exec(movie.title));
 
     let movieList;
 
@@ -54,6 +55,7 @@ const mapStateToProps = (state) => {
     errorApi: state.moovies.apiError,
     loading: state.moovies.loading
   }
+
 };
 
 export default connect(
