@@ -4,7 +4,7 @@ const INTIAL_STATE = {
   movies: [],
   apiError: null,
   loading: true,
-  favorite: false
+  favorites: {}
 };
 
 export default (state = INTIAL_STATE, action) => {
@@ -12,9 +12,21 @@ export default (state = INTIAL_STATE, action) => {
     case API_FETCH_DATA:
       return { ...state, movies: action.payload.items, apiError: action.payload.errorMessage, loading: false};
     case FAVORITE_ADDED:
-      return { ...state, favorite: true};
+      return {
+        ...state,
+        favorites: {
+          ...state.favorites,
+          [action.payload.id]: true
+        }
+      };
     case FAVORITE_REMOVED:
-      return { ...state, favorite: false};
+      return {
+        ...state,
+        favorites: {
+          ...state.favorites,
+          [action.payload.id]: false
+        }
+      };
     default:
       return state;
   }

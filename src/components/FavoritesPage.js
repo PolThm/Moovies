@@ -5,10 +5,11 @@ const FavoritesPage = (props) => {
 
   let listOfFavorites;
 
-  if (props.favorite) {
+  if (props.favorites) {
     listOfFavorites =
       <div>Favorite added</div>
   }
+
 
   return (
     <div>
@@ -20,7 +21,8 @@ const FavoritesPage = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    favorite: state.moovies.favorite
+    // Todo : Implement logic to get favorites movies from state
+    favorites: state.moovies.favorites
   }
 };
 

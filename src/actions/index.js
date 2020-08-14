@@ -10,14 +10,20 @@ export const apiFetchData = () => async dispatch => {
   dispatch({type: API_FETCH_DATA, payload: response.data});
 };
 
-export const favoriteAdded = () => {
+export const favoriteAdded = (id) => {
   return {
-    type: FAVORITE_ADDED
+    type: FAVORITE_ADDED,
+    payload: {
+      id
+    }
   };
 };
 
-export const favoriteRemoved = () => {
+export const favoriteRemoved = (id) => {
   return {
-    type: FAVORITE_REMOVED
+    type: FAVORITE_REMOVED,
+    payload: {
+      id
+    }
   };
 };

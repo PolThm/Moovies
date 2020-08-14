@@ -5,11 +5,11 @@ import {favoriteAdded, favoriteRemoved} from "../actions";
 class MovieOverview extends Component {
 
   favoriteActivated = () => {
-    this.props.favoriteAdded();
+    this.props.favoriteAdded(this.props.id);
   };
 
   favoriteDesactivated = () => {
-    this.props.favoriteRemoved();
+    this.props.favoriteRemoved(this.props.id);
   };
 
   render() {
@@ -37,9 +37,9 @@ class MovieOverview extends Component {
   };
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    favorite: state.moovies.favorite,
+    favorite: state.moovies.favorites[ownProps.id],
   }
 };
 
