@@ -11,7 +11,7 @@ class HomePage extends Component {
 
     movieList = this.props.movies.slice(0, 30)
       .filter((movie) => new RegExp(this.props.searchBar, "i").exec(movie.title))
-      .map(movie => {
+      .map((movie) => {
       return (
         <MovieOverview
           key={movie.id}
@@ -41,6 +41,7 @@ class HomePage extends Component {
 
     return (
       <div>
+        <h1 className="pt-20 text-center text-3xl tracking-wider text-gray-800">Welcome to <span className="text-red-400">Moovies</span></h1>
         <SearchBar/>
         {movieList}
       </div>
@@ -53,7 +54,7 @@ const mapStateToProps = (state) => {
     movies: state.moovies.movies,
     errorApi: state.moovies.apiError,
     loading: state.moovies.loading,
-    searchBar: ''
+    searchBar: state.moovies.searchBar
   }
 
 };
