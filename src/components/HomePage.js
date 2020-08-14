@@ -15,6 +15,7 @@ class HomePage extends Component {
       return (
         <MovieOverview
           key={movie.id}
+          id={movie.id}
           img={movie.image}
           title={movie.title}
           year={movie.year}
