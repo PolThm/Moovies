@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {favoriteAdded, favoriteRemoved} from "../actions";
 
 class MovieOverview extends Component {
-
   favoriteActivated = () => {
     this.props.favoriteAdded(this.props.id);
   };
@@ -13,8 +12,6 @@ class MovieOverview extends Component {
   };
 
   render() {
-
-
     let fa;
 
     if (this.props.favorite) {
