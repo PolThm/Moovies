@@ -1,17 +1,38 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from "react-redux";
-import {signIn, signOut} from "../actions";
+import {signIn, signOut, favoriteAdded} from "../actions";
 import firebase from "firebase";
-
 
 class Header extends Component {
   logInOut = () => {
     if (!this.props.isSignedIn) {
-      // firebase.auth().signInAnonymously();
-
       const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
       firebase.auth().signInWithPopup(googleAuthProvider);
+
+      firebase.auth().onAuthStateChanged(firebaseUser => {
+        if (firebaseUser) {
+          const userRef = firebase.firestore().collection('users').doc(firebaseUser.uid);
+          userRef.get()
+            .then(doc => {
+              for (const favorite of Object.keys(this.props.favorites)) {
+                userRef.update({
+                  favorites: firebase.firestore.FieldValue.arrayUnion(favorite)
+                })
+              }
+
+              if (doc.exists) {
+                for (const favorite of doc.data().favorites) {
+                  this.props.favoriteAdded(favorite);
+                }
+              } else {
+                userRef.set({
+                  favorites: []
+                })
+              }
+            });
+        }
+      });
 
       this.props.signIn();
     } else {
@@ -21,16 +42,12 @@ class Header extends Component {
   };
 
   render() {
-    firebase.auth().onAuthStateChanged(firebaseUser => {
-      console.log(firebaseUser);
-    });
-
     let logMenu;
 
     if (!this.props.isSignedIn) {
       logMenu = "Login";
     } else {
-      logMenu = "Logout";
+      logMenu = <Link to="/">Logout</Link>
     }
 
     return (
@@ -53,11 +70,12 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isSignedIn: state.auth.isSignedIn
+    isSignedIn: state.firebase.isSignedIn,
+    favorites: state.moovies.favorites
   }
 };
 
 export default connect(
   mapStateToProps,
-  {signIn, signOut}
+  {signIn, signOut, favoriteAdded}
 )(Header);

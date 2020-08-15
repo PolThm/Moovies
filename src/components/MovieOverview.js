@@ -1,14 +1,27 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {favoriteAdded, favoriteRemoved} from "../actions";
+import firebase from "firebase";
 
 class MovieOverview extends Component {
   favoriteActivated = () => {
     this.props.favoriteAdded(this.props.id);
+    const currentUser = firebase.auth().currentUser;
+    if (currentUser) {
+      firebase.firestore().collection('users').doc(currentUser.uid).update({
+        favorites: firebase.firestore.FieldValue.arrayUnion(this.props.id)
+      })
+    }
   };
 
   favoriteDesactivated = () => {
     this.props.favoriteRemoved(this.props.id);
+    const currentUser = firebase.auth().currentUser;
+    if (currentUser) {
+      firebase.firestore().collection('users').doc(currentUser.uid).update({
+        favorites: firebase.firestore.FieldValue.arrayRemove(this.props.id)
+      })
+    }
   };
 
   render() {

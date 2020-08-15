@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
 import mooviesReducer from './mooviesReducer';
-import authReducer from "./authReducer";
+import firebaseReducer from "./firebaseReducer";
 
 export default combineReducers({
   moovies: mooviesReducer,
-  auth: authReducer
+  firebase: firebaseReducer
 });

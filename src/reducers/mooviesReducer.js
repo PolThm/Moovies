@@ -2,15 +2,16 @@ import {
   API_FETCH_DATA,
   FAVORITE_ADDED,
   FAVORITE_REMOVED,
-  MOVIES_SEARCHED
+  MOVIES_SEARCHED,
+  SIGN_OUT
 } from '../actions/types';
 
 const INTIAL_STATE = {
   movies: [],
   apiError: null,
+  searchBar: '',
   loading: true,
-  favorites: {},
-  searchBar: ''
+  favorites: {}
 };
 
 export default (state = INTIAL_STATE, action) => {
@@ -35,6 +36,9 @@ export default (state = INTIAL_STATE, action) => {
       };
     case MOVIES_SEARCHED:
       return {...state, searchBar: action.payload.text};
+
+    case SIGN_OUT:
+      return {...state, favorites: {}};
     default:
       return state;
   }

@@ -9,11 +9,13 @@ import {apiFetchData} from '../actions';
 import {connect} from "react-redux";
 import firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/firestore";
 import {FirebaseAuthProvider} from "@react-firebase/auth";
 import {firebaseConfig} from "../firebaseConfig";
 
 class App extends Component {
   componentDidMount() {
+    firebase.auth().signOut();
     this.props.apiFetchData();
   }
 
