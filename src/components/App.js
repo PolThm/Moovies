@@ -7,6 +7,10 @@ import FavoritesPage from "./FavoritesPage";
 import history from '../history';
 import {apiFetchData} from '../actions';
 import {connect} from "react-redux";
+import firebase from "firebase/app";
+import "firebase/auth";
+import {FirebaseAuthProvider} from "@react-firebase/auth";
+import {firebaseConfig} from "../firebaseConfig";
 
 class App extends Component {
   componentDidMount() {
@@ -15,17 +19,19 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        <Router history={history}>
-          <div>
-            <Header/>
-            <Switch>
-              <Route path="/" exact component={HomePage}/>
-              <Route path="/favorites" exact component={FavoritesPage}/>
-            </Switch>
-          </div>
-        </Router>
-      </div>
+      <FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
+        <div className="container">
+          <Router history={history}>
+            <div>
+              <Header/>
+              <Switch>
+                <Route path="/" exact component={HomePage}/>
+                <Route path="/favorites" exact component={FavoritesPage}/>
+              </Switch>
+            </div>
+          </Router>
+        </div>
+      </FirebaseAuthProvider>
     );
   }
 }
