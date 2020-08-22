@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^5.6.4",
     "@emotion/core": "^10.0.34",
+    "@fullhuman/postcss-purgecss": "latest",
     "@react-firebase/auth": "^0.2.10",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -11,7 +13,6 @@
     "axios": "^0.19.2",
     "firebase": "^7.18.0",
     "history": "latest",
-    "lodash": "^4.17.19",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
@@ -24,9 +25,9 @@
   "scripts": {
     "build:css": "postcss src/tailwind/tailwind.css -o src/tailwind.css",
     "watch:css": "postcss src/tailwind/tailwind.css -o src/tailwind.css -w",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

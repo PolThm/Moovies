@@ -13,4 +13,10 @@
   width: fit-content;
 }
 
+.movie-poster {
+  width: 50%;
+  max-width: 8rem;
+  object-fit: contain;
+}
+
 /*# sourceMappingURL=App.css.map */

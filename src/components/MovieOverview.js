@@ -36,7 +36,7 @@ class MovieOverview extends Component {
     return (
       <div className="my-10 p-6 border rounded-lg flex justify-between">
         <div className="flex">
-          <img src={this.props.img} alt="" className="w-32"/>
+          <img src={this.props.img} alt="movie's poster" className="movie-poster"/>
           <div className="ml-8 flex flex-col">
             <h2 className="font-bold">{this.props.title}</h2>
             <p className="pt-3">{this.props.year}</p>
