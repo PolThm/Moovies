@@ -28,7 +28,7 @@ class MovieOverview extends Component {
     let fa;
 
     if (this.props.favorite) {
-      fa = <i className="fas fa-heart mb-auto text-2xl text-red-400 cursor-pointer" onClick={this.favoriteDesactivated}/>;
+      fa = <i className="fas fa-heart mb-auto ml-8 text-2xl text-red-400 cursor-pointer" onClick={this.favoriteDesactivated}/>;
     } else {
       fa = <i className="far fa-heart mb-auto ml-8 text-2xl cursor-pointer" onClick={this.favoriteActivated} />
     }
