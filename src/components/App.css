@@ -16,7 +16,9 @@
 .movie-poster {
   width: 50%;
   max-width: 8rem;
+  height: 100%;
   object-fit: contain;
+  margin: auto;
 }
 
 /*# sourceMappingURL=App.css.map */
