@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from "react-redux";
 import {signIn, signOut, favoriteAdded} from "../actions";
-import firebase from "firebase";
+import firebase from "firebase/app";
 
 class Header extends Component {
   logInOut = () => {

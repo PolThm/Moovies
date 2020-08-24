@@ -8,10 +8,9 @@ import {
   MOVIES_SEARCHED
 } from './types';
 
-export const signIn = (userId) => {
+export const signIn = () => {
   return {
     type: SIGN_IN,
-    payload: userId
   };
 };
 

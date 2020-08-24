@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {Router, Route, Switch} from 'react-router-dom';
+import {Route, Switch, BrowserRouter} from 'react-router-dom';
 import './App.css';
 import Header from "./Header";
 import HomePage from "./HomePage";
 import FavoritesPage from "./FavoritesPage";
-import history from '../history';
 import {apiFetchData} from '../actions';
 import {connect} from "react-redux";
 import firebase from "firebase/app";
@@ -23,7 +22,7 @@ class App extends Component {
     return (
       <FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
         <div className="container">
-          <Router history={history}>
+          <BrowserRouter>
             <div>
               <Header/>
               <Switch>
@@ -31,7 +30,7 @@ class App extends Component {
                 <Route path="/favorites" exact component={FavoritesPage}/>
               </Switch>
             </div>
-          </Router>
+          </BrowserRouter>
         </div>
       </FirebaseAuthProvider>
     );
