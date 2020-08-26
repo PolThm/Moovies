@@ -1,4 +1,15 @@
-https://moovies.pol-thomas.com/
+Link to the project: https://moovies.pol-thomas.com/
+
+Main technologies used for the project:
+- React JS
+- Redux
+- React Router
+- Firebase
+- IMDb API
+- SASS
+- Tailwind CSS
+
+----------------------------------------------------------------------------------------------------
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
