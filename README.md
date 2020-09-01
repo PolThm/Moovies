@@ -6,7 +6,6 @@ Main technologies used for the project:
 - React Router
 - Firebase
 - IMDb API
-- SASS
 - Tailwind CSS
 
 ----------------------------------------------------------------------------------------------------
